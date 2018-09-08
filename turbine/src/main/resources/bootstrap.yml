@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: turbine
+  cloud:
+    config:
+      uri: http://localhost:8000
+  profiles:
+    active: default
+---
+
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://config-server:8000

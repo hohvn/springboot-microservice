@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ping
+  cloud:
+    config:
+      uri: http://localhost:8000
+---
+
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://config-server:8000

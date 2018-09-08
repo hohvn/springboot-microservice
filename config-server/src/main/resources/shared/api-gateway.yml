@@ -1,0 +1,44 @@
+server:
+  port: 8002
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    usename: guest
+    password: guest
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: ping
+        uri: lb://ping
+        predicates:
+        - Path=/v1/ping/**
+        filters:
+        - RewritePath=/v1/ping/(?<path>.*), /$\{path}
+  zipkin:
+    baseUrl:
+  sleuth:
+    sampler:
+      percentage: 1
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health
+---
+
+spring:
+  profiles: docker

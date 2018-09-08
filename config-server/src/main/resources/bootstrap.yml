@@ -1,6 +1,11 @@
 server:
   port: 8000
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    usename: guest
+    password: guest
   config:
     name: config-server
   cloud:
@@ -10,3 +15,6 @@ spring:
           search-locations: classpath:shared/
   profiles:
     active: native
+management:
+  security:
+    enabled: false
