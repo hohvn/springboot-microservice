@@ -1,0 +1,13 @@
+server:
+  port: 8001
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health

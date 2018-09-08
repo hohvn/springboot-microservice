@@ -1,0 +1,6 @@
+jar {
+    mainClassName = "com.thaitran.microservices.configserver.ConfigServerApplication"
+}
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-config-server')
+}

@@ -1,0 +1,3 @@
+rootProject.name = 'training'
+include 'config-server'
+include 'eureka-server'
