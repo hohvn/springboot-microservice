@@ -1,0 +1,42 @@
+server:
+  port: 8005
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka
+  instance:
+    preferIpAddress: true
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+    host: localhost
+    port: 5672
+    usename: guest
+    password: guest
+zipkin:
+  collector:
+    http:
+      enabled: false
+    rabbitmq:
+      addresses: localhost:5672
+---
+
+spring:
+  profiles: docker
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8001/eureka

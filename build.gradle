@@ -4,6 +4,8 @@ buildscript {
         swaggerVersion = '2.9.2'
         lombokVersion = '1.18.2'
         gradleDockerVersion = '1.2'
+        zipkinVersion = '2.11.1'
+        zipkinGUIVersion = '2.11.1'
     }
     repositories {
         mavenCentral()
@@ -61,17 +63,25 @@ configure(subprojects - project(':config-server') - project('eureka-server')) {
 
 
 //group web mvc
-configure([project(':ping')]) {
+configure([project(':ping'),
+           project(':slave')]) {
     dependencies {
         compile('org.springframework.boot:spring-boot-starter-web')
 
     }
 }
 
-//group hystrix
-configure([project(':api-gateway')]) {
+//group hystrix, zipkin
+configure([project(':api-gateway'),
+           project(':ping'),
+           project(':slave'),
+           project(':tracing')]) {
     dependencies {
         compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
+        compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')
+        compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
         compile('org.springframework.cloud:spring-cloud-starter-zipkin')
+        compile("org.springframework.boot:spring-boot-starter-amqp")
+        compile('org.springframework.amqp:spring-rabbit')
     }
 }

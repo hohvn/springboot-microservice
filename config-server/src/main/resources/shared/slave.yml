@@ -1,13 +1,5 @@
 server:
-  port: 8100
-feign:
-  hystrix:
-    enabled: true
-  compression:
-    request:
-      enabled: true
-    response:
-      enabled: true
+  port: 8101
 eureka:
   instance:
     preferIpAddress: true
@@ -34,5 +26,3 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
-test:
-  string: ThaiTV

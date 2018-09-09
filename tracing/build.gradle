@@ -1,0 +1,9 @@
+dependencies {
+    compile('org.springframework.cloud:spring-cloud-starter-zipkin')
+    runtime("io.zipkin.java:zipkin-autoconfigure-ui:${zipkinGUIVersion}")
+    compile("io.zipkin.java:zipkin-server:${zipkinVersion}") {
+        exclude module: 'spring-boot-starter-log4j2'
+    }
+    // https://mvnrepository.com/artifact/io.zipkin.java/zipkin-collector-rabbitmq
+    compile group: 'io.zipkin.java', name: 'zipkin-collector-rabbitmq', version: '2.8.4'
+}

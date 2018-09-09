@@ -10,6 +10,7 @@ eureka:
       defaultZone: http://localhost:8001/eureka
 spring:
   rabbitmq:
+    addresses: localhost:5672
     host: localhost
     port: 5672
     usename: guest
@@ -27,10 +28,11 @@ spring:
         filters:
         - RewritePath=/v1/ping/(?<path>.*), /$\{path}
   zipkin:
-    baseUrl:
+    sender:
+      type: rabbit
   sleuth:
     sampler:
-      percentage: 1
+      percentage: 1.0
 management:
   security:
     enabled: false

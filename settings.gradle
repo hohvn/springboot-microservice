@@ -4,4 +4,7 @@ include 'eureka-server'
 include 'api-gateway'
 include 'turbine'
 include 'hystrix-dashboard'
+include 'tracing'
+//testing service
 include 'ping'
+include 'slave'
