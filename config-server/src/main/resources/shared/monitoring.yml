@@ -1,13 +1,5 @@
 server:
-  port: 8100
-feign:
-  hystrix:
-    enabled: true
-  compression:
-    request:
-      enabled: true
-    response:
-      enabled: true
+  port: 8006
 eureka:
   instance:
     preferIpAddress: true
@@ -23,16 +15,7 @@ management:
         include: "*"
 spring:
   rabbitmq:
-    addresses: localhost:5672
     host: localhost
     port: 5672
     usename: guest
     password: guest
-  zipkin:
-    sender:
-      type: rabbit
-  sleuth:
-    sampler:
-      percentage: 1.0
-test:
-  string: ThaiTV

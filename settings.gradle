@@ -5,6 +5,7 @@ include 'api-gateway'
 include 'turbine'
 include 'hystrix-dashboard'
 include 'tracing'
+include 'monitoring'
 //testing service
 include 'ping'
 include 'slave'

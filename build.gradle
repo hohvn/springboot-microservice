@@ -75,7 +75,8 @@ configure([project(':ping'),
 configure([project(':api-gateway'),
            project(':ping'),
            project(':slave'),
-           project(':tracing')]) {
+           project(':tracing'),
+           project(':monitoring')]) {
     dependencies {
         compile('org.springframework.cloud:spring-cloud-starter-netflix-hystrix')
         compile('org.springframework.cloud:spring-cloud-netflix-hystrix-stream')

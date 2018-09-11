@@ -47,7 +47,7 @@ services:
     - RABBIT_ADDRESSES=rabbitmq:5672
     ports:
     # Port used for the Zipkin UI and HTTP Api
-    - ${ZIPKIN_PORT:-9411}:9411
+    - 9411
     depends_on:
     - rabbitmq
   rabbitmq:
@@ -58,30 +58,30 @@ services:
     ports:
     - 5672:5672
     - 15672:15672
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
-    container_name: elasticsearch
-    expose:
-      - '9200'
-      - '9300'
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.4.0
-    container_name: kibana
-    expose:
-      - "5601"
-    ports:
-      - "5601:5601"
-#    links:
-#      - elasticsearch:es
-    depends_on:
-      - elasticsearch
-  logstash:
-    image: docker.elastic.co/logstash/logstash:6.4.0
-    container_name: logstash
-    expose:
-      - "5044"
-    ports:
-      - "5044:5044"
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+#    container_name: elasticsearch
+#    expose:
+#      - '9200'
+#      - '9300'
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:6.4.0
+#    container_name: kibana
+#    expose:
+#      - "5601"
+#    ports:
+#      - "5601:5601"
+##    links:
+##      - elasticsearch:es
+#    depends_on:
+#      - elasticsearch
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:6.4.0
+#    container_name: logstash
+#    expose:
+#      - "5044"
+#    ports:
+#      - "5044:5044"

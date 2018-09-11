@@ -1,0 +1,12 @@
+ext {
+    springBootAdminVersion = '2.0.2'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+    }
+}
+dependencies {
+    compile('de.codecentric:spring-boot-admin-starter-server')
+}
