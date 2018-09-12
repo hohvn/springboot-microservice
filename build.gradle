@@ -45,6 +45,26 @@ subprojects {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
+    task buildDocker(type: Docker, dependsOn: build) {
+        doFirst {
+            push = false
+            applicationName = project.jarName
+            tagVersion = project.versionName
+            dockerfile = file('src/main/docker/Dockerfile')
+            // Copy the built fat jar to the Docker plugin staging directory
+            copy {
+                from jar
+                into stageDir
+            }
+            // Copy the run.sh file to the Docker plugin staging directory
+            copy {
+                from "${project.buildDir}/resources/main/run.sh"
+                into stageDir
+            }
+        }
+
+    }
+
 }
 //add config client to all projects exclude config server
 configure(subprojects - project(':config-server')) {
@@ -64,7 +84,8 @@ configure(subprojects - project(':config-server') - project('eureka-server')) {
 
 //group web mvc
 configure([project(':ping'),
-           project(':slave')]) {
+           project(':slave'),
+           project(':command-service')]) {
     dependencies {
         compile('org.springframework.boot:spring-boot-starter-web')
 
@@ -86,3 +107,6 @@ configure([project(':api-gateway'),
         compile('org.springframework.amqp:spring-rabbit')
     }
 }
+
+
+

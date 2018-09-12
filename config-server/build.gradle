@@ -1,6 +1,11 @@
-jar {
-    mainClassName = "com.thaitran.microservices.configserver.ConfigServerApplication"
+buildscript {
+    ext {
+        jarName = 'api-gateway'
+        versionName = '1.0.0'
+
+    }
 }
+mainClassName = "com.thaitran.microservices.configserver.ConfigServerApplication"
 dependencies {
     compile('org.springframework.cloud:spring-cloud-config-server')
     compile('org.springframework.cloud:spring-cloud-config-monitor')
