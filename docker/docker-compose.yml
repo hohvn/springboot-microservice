@@ -47,7 +47,7 @@ services:
     - RABBIT_ADDRESSES=rabbitmq:5672
     ports:
     # Port used for the Zipkin UI and HTTP Api
-    - 9411
+    - "8008:9411"
     depends_on:
     - rabbitmq
   rabbitmq:
