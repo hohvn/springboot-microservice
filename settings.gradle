@@ -9,3 +9,5 @@ include 'monitoring'
 //testing service
 include 'ping'
 include 'slave'
+include 'command-service'
+include 'query-service'

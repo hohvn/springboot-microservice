@@ -1,0 +1,52 @@
+server:
+  port: 8103
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+    host: localhost
+    port: 5672
+    usename: guest
+    password: guest
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      percentage: 1.0
+  datasource:
+    url: jdbc:mysql://localhost:3306/cms_v1?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  cloud:
+    stream:
+      defaultBinder: kafka
+      kafka:
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+          zkNodes: localhost
+          defaultZkPort: 2181
+      bindings:
+        help-consummer:
+          destination: help-consummer
+          contentType: 'application/json'
+          consumer:
+            auto-commit-offset: true
+

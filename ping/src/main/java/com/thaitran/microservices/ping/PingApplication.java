@@ -24,6 +24,9 @@ public class PingApplication {
     @Autowired
     SlaveClient slaveClient;
 
+    @Autowired
+    CommandClient commandClient;
+
     public static void main(String[] args) {
         SpringApplication.run(PingApplication.class, args);
     }
@@ -33,5 +36,10 @@ public class PingApplication {
     @GetMapping("/")
     public String test() {
         return slaveClient.getSlaveMessage();
+    }
+
+    @GetMapping("/stream")
+    public String stream() {
+        return commandClient.getHelp();
     }
 }
